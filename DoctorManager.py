@@ -5,8 +5,7 @@ class DoctorManager:
 
 
     def format_dr_info(self, doctor):
-      formatInfo = f"{doctor.doctor_id}_{doctor.name}_{doctor.specialization}_{doctor.working_time}_{doctor.qualification}_{doctor.room_number}" #format in the txt file
-      return formatInfo
+      return f"{doctor.get_doctor_id()}_{doctor.get_name()}_{doctor.get_specialization()}_{doctor.get_working_time()}_{doctor.get_qualification()}_{doctor.get_room_number()}" #format in the txt file
 
 
     def enter_dr_info(self):
@@ -16,8 +15,7 @@ class DoctorManager:
       docTiming = input("Enter the doctor's timing (e.g., 7am-10pm): ")
       docQual = input("Enter the doctor's qualification: ")
       docRoom = input("Enter the doctor's room number: ")
-      docInfo = Doctor(docId, docName, docSpeciality, docTiming, docQual, docRoom) #make doctor object using class doctor
-      return docInfo
+      return Doctor(docId, docName, docSpeciality, docTiming, docQual, docRoom) #make doctor object using class doctor  
 
 
     def read_doctors_file(self):
@@ -37,7 +35,7 @@ class DoctorManager:
       findId = input("Enter the doctor Id: ")
 
       for doctor in self.doctors: 
-        if doctor.doctor_id == findId:
+        if doctor.get_doctor_id() == findId:
           return doctor
       
       print("Can't find the doctor with the same ID on the system\n")
@@ -48,7 +46,7 @@ class DoctorManager:
       findName = input("Enter the doctor name: ")
 
       for doctor in self.doctors: 
-        if doctor.name == findName:
+        if doctor.get_name() == findName:
           return doctor
       
       print("Can't find the doctor with the same name on the system\n")
@@ -59,7 +57,7 @@ class DoctorManager:
       displayLabel = f'\n{"Id":<5}{"Name":<23}{"Speciality":<16}{"Timing":<16}{"Qualification":<16}{"Room Number":<12} \n'
       print(displayLabel)
 
-      displayInfo = f'{doctor.doctor_id:<5}{doctor.name:<23}{doctor.specialization:<16}{doctor.working_time:<16}{doctor.qualification:<16}{doctor.room_number:<12} \n'
+      displayInfo = f'{doctor.get_doctor_id():<5}{doctor.get_name():<23}{doctor.get_specialization():<16}{doctor.get_working_time():<16}{doctor.get_qualification():<16}{doctor.get_room_number():<12} \n'
       print(displayInfo)
 
 
@@ -67,19 +65,19 @@ class DoctorManager:
       editDoc = input("Please enter the id of the doctor that you want to edit their information: ")
 
       for doctor in self.doctors:
-        if doctor.doctor_id == editDoc:
-          doctor.name = input("\nEnter new Name: ")
-          doctor.specialization = input("Enter new Specialist in: ")
-          doctor.working_time = input("Enter new Timing: ")
-          doctor.qualification = input("Enter new Qualification: ")
-          doctor.room_number = input("Enter new Room number: ")
-          print(f"\nDoctor whose ID is {doctor.doctor_id} has been edited\n")
+        if doctor.get_doctor_id() == editDoc:
+          doctor.set_name(input("\nEnter new Name: "))
+          doctor.set_specialization(input("Enter new Specialist in: "))
+          doctor.set_working_time(input("Enter new Timing: "))
+          doctor.set_qualification(input("Enter new Qualification: "))
+          doctor.set_room_number(input("Enter new Room number: "))
+          print(f"\nDoctor whose ID is {doctor.get_doctor_id()} has been edited\n")
 
 
           with open('doctors.txt', 'w') as d:
             d.write(self.header + '\n')
             for doctor in self.doctors:
-              edit = f'{doctor.doctor_id}_{doctor.name}_{doctor.specialization}_{doctor.working_time}_{doctor.qualification}_{doctor.room_number}\n'
+              edit = f'{doctor.get_doctor_id()}_{doctor.get_name()}_{doctor.get_specialization()}_{doctor.get_working_time()}_{doctor.get_qualification()}_{doctor.get_room_number()}\n'
               d.write(edit)
 
           return doctor
@@ -92,7 +90,7 @@ class DoctorManager:
       print(displayLabel)
 
       for doctor in self.doctors:
-        displayInfo = f'{doctor.doctor_id:<5}{doctor.name:<23}{doctor.specialization:<16}{doctor.working_time:<16}{doctor.qualification:<16}{doctor.room_number:<12} \n'
+        displayInfo = f'{doctor.get_doctor_id():<5}{doctor.get_name():<23}{doctor.get_specialization():<16}{doctor.get_working_time():<16}{doctor.get_qualification():<16}{doctor.get_room_number():<12} \n'
         print(displayInfo)
 
 
@@ -112,4 +110,4 @@ class DoctorManager:
       newFormat = self.format_dr_info(newDoc)
       with open('doctors.txt', 'a') as d:
         d.write(newFormat + '\n')
-      print(f"\nDoctor whose ID is {newDoc.doctor_id} has been added\n")
+      print(f"\nDoctor whose ID is {newDoc.get_doctor_id()} has been added\n")
