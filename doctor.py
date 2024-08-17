@@ -31,19 +31,19 @@ class Doctor:
     def set_doctor_id(self, doctor_id):
         self.doctor_id = doctor_id
     
-    def get_name(self, name):
+    def set_name(self, name):
         self.name = name
     
-    def get_specialization(self, specialization):
+    def set_specialization(self, specialization):
         self.specialization = specialization
     
-    def get_working_time(self, working_time):
+    def set_working_time(self, working_time):
         self.working_time = working_time
     
-    def get_qualification(self, qualification):
+    def set_qualification(self, qualification):
         self.qualification = qualification
     
-    def get_room_number(self, room_number):
+    def set_room_number(self, room_number):
         self.room_number = room_number
 
     def __str__(self):
