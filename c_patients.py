@@ -4,46 +4,46 @@
 # pid, name, disease, gender, age
 class Patient:
     def __init__(self, pid = "N/A", name = "N/A", disease = "N/A", gender = "N/A", age = "N/A"):
-        self.pid = pid
-        self.name = name
-        self.disease = disease
-        self.gender = gender
-        self.age = age
+        self.__pid = pid
+        self.__name = name
+        self.__disease = disease
+        self.__gender = gender
+        self.__age = age
 
     #getters
     def get_pid(self):
-        return self.pid
+        return self.__pid
     
     def get_name(self):
-        return self.name
+        return self.__name
     
     def get_disease(self):
-        return self.disease
+        return self.__disease
 
     def get_gender(self):
-        return self.gender
+        return self.__gender
     
     def get_age(self):
-        return self.age
+        return self.__age
     
     #setters
     def set_pid(self, pid):
-        self.pid = pid 
+        self.__pid = pid 
 
     def set_name(self, name):
-        self.name = name
+        self.__name = name
     
     def set_disease(self, disease):
-        self.disease = disease
+        self.__disease = disease
 
     def set_gender(self, gender):
-        self.gender = gender
+        self.__gender = gender
     
     def set_age(self, age):
-        self.age = age
+        self.__age = age
 
     #str
     def __str__(self):
-        return f"{self.pid}_{self.name}_{self.disease}_{self.gender}_{self.age})"
+        return f"{self.__pid}_{self.__name}_{self.__disease}_{self.__gender}_{self.__age})"
     
 # print(Patient())
