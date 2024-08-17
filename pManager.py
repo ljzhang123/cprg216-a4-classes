@@ -1,3 +1,5 @@
+from c_patients import Patient
+
 class PatientManager:
     def __init__(self):
         self.patients = []
@@ -29,7 +31,7 @@ class PatientManager:
             if patient.get_pid() == id:
                 self.display_patient_info(patient)
                 return 
-        print("Can't find the patient")        
+        print("Can't find the Patient with the same id on the system")        
 
     def display_patient_info(self, patient: "Patient"):
         print(
@@ -38,7 +40,20 @@ class PatientManager:
         )
     
     def edit_patient_info_by_id(self):
-        pass
+        id = input("Please enter the id of the Patient that you want to edit their information: ")
+        for patient in self.patients:
+            if patient.get_pid() == id:
+                newName = input("Enter new name: ")
+                newDisease = input("Enter new disease: ")
+                newGender = input("Enter new gender: ")
+                newAge = input("Enter new age: ")
+
+                # TODO use setters to update Patient object
+                # TODO write the updated version to patient.txt
+                # TODO confirm it has been updated
+
+                return
+        print("Can't find the Patient with the same id on the system")
 
     def display_patients_list(self):
         print(f"{'ID':<5}{'Name':<23}{'Disease':<16}{'Gender':<16}{'Age':<3}")
@@ -73,6 +88,6 @@ class PatientManager:
 #         return "_".join((self.pid, self.name, self.disease, self.gender, self.age))
     
 
-manager = PatientManager()
-for patient in manager.patients:
-    print(patient)
+# manager = PatientManager()
+# for patient in manager.patients:
+#     print(patient)
