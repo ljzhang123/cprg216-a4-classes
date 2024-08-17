@@ -44,4 +44,6 @@ class Patient:
 
     #str
     def __str__(self):
-        return f"Patient(pid={self.pid}, name={self.name}, disease={self.disease}, gender={self.gender}, age={self.age})"
+        return f"{self.pid}_{self.name}_{self.disease}_{self.gender}_{self.age})"
+    
+# print(Patient())
