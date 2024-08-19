@@ -24,7 +24,7 @@ class DoctorManager:
       with open('doctors.txt') as d:
         self.header = next(d).strip() #take out the first line (header) in the txt file
         for line in d:
-          doctor_data = line.strip().split('_')
+          doctor_data = line.strip('\n').split('_')
 
           if len(doctor_data) == 6: #ensure that there is 6 data for each doctor
             doctor_id, name, specialization, working_time, qualification, room_number = doctor_data
