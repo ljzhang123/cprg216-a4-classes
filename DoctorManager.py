@@ -24,7 +24,7 @@ class DoctorManager:
       with open('doctors.txt') as d:
         self.header = next(d).strip() #take out the first line (header) in the txt file
         for line in d:
-          doctor_data = line.strip().split('_')
+          doctor_data = line.strip('\n').split('_')
 
           if len(doctor_data) == 6: #ensure that there is 6 data for each doctor
             doctor_id, name, specialization, working_time, qualification, room_number = doctor_data
@@ -38,7 +38,8 @@ class DoctorManager:
 
       for doctor in self.doctors: 
         if doctor.get_doctor_id() == findId:
-          return doctor
+          self.display_doctor_info(doctor)
+          return
       
       print("Can't find the doctor with the same ID on the system\n")
       return None
@@ -49,7 +50,8 @@ class DoctorManager:
 
       for doctor in self.doctors: 
         if doctor.get_name() == findName:
-          return doctor
+          self.display_doctor_info(doctor)
+          return
       
       print("Can't find the doctor with the same name on the system\n")
       return None
@@ -111,5 +113,5 @@ class DoctorManager:
 
       newFormat = self.format_dr_info(newDoc)
       with open('doctors.txt', 'a') as d:
-        d.write(newFormat + '\n')
+        d.write('\n' + newFormat)
       print(f"\nDoctor whose ID is {newDoc.get_doctor_id()} has been added\n")
