@@ -44,6 +44,6 @@ class Patient:
 
     #str return format pid_name_disease_gender_age
     def __str__(self):
-        return f"{self.__pid}_{self.__name}_{self.__disease}_{self.__gender}_{self.__age})"
+        return f"{self.__pid}_{self.__name}_{self.__disease}_{self.__gender}_{self.__age}"
     
 # print(Patient())
