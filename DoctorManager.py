@@ -38,7 +38,8 @@ class DoctorManager:
 
       for doctor in self.doctors: 
         if doctor.get_doctor_id() == findId:
-          return doctor
+          self.display_doctor_info(doctor)
+          return
       
       print("Can't find the doctor with the same ID on the system\n")
       return None
@@ -49,7 +50,8 @@ class DoctorManager:
 
       for doctor in self.doctors: 
         if doctor.get_name() == findName:
-          return doctor
+          self.display_doctor_info(doctor)
+          return
       
       print("Can't find the doctor with the same name on the system\n")
       return None
