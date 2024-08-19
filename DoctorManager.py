@@ -113,5 +113,5 @@ class DoctorManager:
 
       newFormat = self.format_dr_info(newDoc)
       with open('doctors.txt', 'a') as d:
-        d.write(newFormat + '\n')
+        d.write('\n' + newFormat)
       print(f"\nDoctor whose ID is {newDoc.get_doctor_id()} has been added\n")
