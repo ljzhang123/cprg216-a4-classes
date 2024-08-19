@@ -6,7 +6,7 @@ class PatientManager:
         self.read_patients_file()
     
     def format_patient_info_for_file(self, patient: "Patient"):
-        return str(patient) + "\n"
+        return str(patient)
 
     def enter_patient_info(self) -> "Patient":
         pid = input("Enter Patient id: ")
@@ -53,11 +53,12 @@ class PatientManager:
                 patient.set_gender(newGender)
                 patient.set_age(newAge)
 
-                # TODO write the updated version to patient.txt
-                
-                # TODO confirm it has been updated
+                # overwrite entire txt file with new info
+                self.write_list_of_patients_to_file()
 
+                print(f"Patient whose ID is {id} has been edited.")
                 return
+            
         print("Can't find the Patient with the same id on the system")
 
     def display_patients_list(self):
@@ -71,7 +72,9 @@ class PatientManager:
 
             patients = []
             for patient in self.patients:
-                pass
+                patients.append(self.format_patient_info_for_file(patient))
+
+            file.writelines(patients)
 
     def add_patient_to_file(self):
         newPatient = self.enter_patient_info()
@@ -81,25 +84,13 @@ class PatientManager:
         with open("patients.txt", "a") as file:
             file.write(text)
         
-        # TODO confirm new patient as been added
+        print(f"Patient whose ID is {newPatient.get_pid} has been added.")
         
 
-
-
-# class Patient:
-#     def __init__(self, pid, name, disease, gender, age):
-#         self.pid = pid
-#         self.name = name
-#         self.disease = disease
-#         self.gender = gender
-#         self.age = age
-
-#     def __str__(self) -> str:
-#         return "_".join((self.pid, self.name, self.disease, self.gender, self.age))
     
 
 manager = PatientManager()
-# for patient in manager.patients:
-#     print(patient)
+for patient in manager.patients:
+    print(str(patient))
 
 print(manager.__dict__["patients"][1].__dict__.values())
