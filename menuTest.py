@@ -1,5 +1,12 @@
 from DoctorManager import DoctorManager
 from pManager import PatientManager
+import shutil
+import os
+
+def restoreOriginal(backup, current):
+    if os.path.exists(current):
+        os.remove(current)
+    shutil.copy2(backup, current)
 
 def mainMenuMock(selection):
     print(
@@ -64,6 +71,10 @@ def patMenuMock(selection):
             manager.edit_patient_info_by_id()
         case 5:
             print()
+
+
+restoreOriginal("doctorsBackup.txt", "doctors.txt")
+restoreOriginal("patientsBackup.txt", "patients.txt")
 
 mainMenuMock(1)
 docMenuMock(1)
