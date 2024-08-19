@@ -26,7 +26,7 @@ class PatientManager:
                 self.patients.append(patient)
 
     def search_patient_by_Id(self):
-        id = input("Enter the Patient Id: ")
+        id = input("\nEnter the Patient Id: ")
         for patient in self.patients:
             if patient.get_pid() == id:
                 self.display_patient_info(patient)
@@ -35,8 +35,8 @@ class PatientManager:
 
     def display_patient_info(self, patient: "Patient"):
         print(
-            f"{'ID':<5}{'Name':<23}{'Disease':<16}{'Gender':<16}{'Age':<3}\n"
-            f"{patient.get_pid():<5}{patient.get_name():<23}{patient.get_disease():<16}{patient.get_gender():<16}{patient.get_age():<3}"
+            f"\n{'ID':<5}{'Name':<23}{'Disease':<16}{'Gender':<16}{'Age':<3}\n"
+            f"\n{patient.get_pid():<5}{patient.get_name():<23}{patient.get_disease():<16}{patient.get_gender():<16}{patient.get_age():<3}"
         )
     
     def edit_patient_info_by_id(self):
@@ -64,7 +64,7 @@ class PatientManager:
     def display_patients_list(self):
         print(f"{'ID':<5}{'Name':<23}{'Disease':<16}{'Gender':<16}{'Age':<3}")
         for patient in self.patients:
-            print(f"{patient.get_pid():<5}{patient.get_name():<23}{patient.get_disease():<16}{patient.get_gender():<16}{patient.get_age():<3}")
+            print(f"\n{patient.get_pid():<5}{patient.get_name():<23}{patient.get_disease():<16}{patient.get_gender():<16}{patient.get_age():<3}")
 
     def write_list_of_patients_to_file(self):
         with open("patients.txt", "w") as file:
@@ -89,8 +89,8 @@ class PatientManager:
 
     
 
-manager = PatientManager()
-for patient in manager.patients:
-    print(str(patient))
+# manager = PatientManager()
+# for patient in manager.patients:
+#     print(str(patient))
 
-print(manager.__dict__["patients"][1].__dict__.values())
+# print(manager.__dict__["patients"][1].__dict__.values())
