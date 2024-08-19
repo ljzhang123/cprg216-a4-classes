@@ -6,7 +6,7 @@ class PatientManager:
         self.read_patients_file()
     
     def format_patient_info_for_file(self, patient: "Patient"):
-        return str(patient)
+        return "\n" + str(patient)
 
     def enter_patient_info(self) -> "Patient":
         pid = input("Enter Patient id: ")
@@ -56,7 +56,7 @@ class PatientManager:
                 # overwrite entire txt file with new info
                 self.write_list_of_patients_to_file()
 
-                print(f"Patient whose ID is {id} has been edited.")
+                print(f"\nPatient whose ID is {id} has been edited.")
                 return
             
         print("Can't find the Patient with the same id on the system")
@@ -84,13 +84,4 @@ class PatientManager:
         with open("patients.txt", "a") as file:
             file.write(text)
         
-        print(f"Patient whose ID is {newPatient.get_pid} has been added.")
-        
-
-    
-
-# manager = PatientManager()
-# for patient in manager.patients:
-#     print(str(patient))
-
-# print(manager.__dict__["patients"][1].__dict__.values())
+        print(f"\nPatient whose ID is {newPatient.get_pid()} has been added.")
