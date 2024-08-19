@@ -6,7 +6,7 @@ class PatientManager:
         self.read_patients_file()
     
     def format_patient_info_for_file(self, patient: "Patient"):
-        return "_".join((patient.get_pid(), patient.get_name(), patient.get_disease(), patient.get_gender(), patient.get_age()))
+        return str(patient) + "\n"
 
     def enter_patient_info(self) -> "Patient":
         pid = input("Enter Patient id: ")
@@ -21,7 +21,7 @@ class PatientManager:
         with open("patients.txt", "r") as file:
             header = file.readline()
             for line in file:
-                info = line.split("_")
+                info = line.strip("\n").split("_")
                 patient = Patient(info[0], info[1], info[2], info[3], info[4])
                 self.patients.append(patient)
 
@@ -48,8 +48,13 @@ class PatientManager:
                 newGender = input("Enter new gender: ")
                 newAge = input("Enter new age: ")
 
-                # TODO use setters to update Patient object
+                patient.set_name(newName)
+                patient.set_disease(newDisease)
+                patient.set_gender(newGender)
+                patient.set_age(newAge)
+
                 # TODO write the updated version to patient.txt
+                
                 # TODO confirm it has been updated
 
                 return
@@ -61,7 +66,12 @@ class PatientManager:
             print(f"{patient.get_pid():<5}{patient.get_name():<23}{patient.get_disease():<16}{patient.get_gender():<16}{patient.get_age():<3}")
 
     def write_list_of_patients_to_file(self):
-        pass
+        with open("patients.txt", "w") as file:
+            file.write("id_Name_Disease_Gender_Age")
+
+            patients = []
+            for patient in self.patients:
+                pass
 
     def add_patient_to_file(self):
         newPatient = self.enter_patient_info()
@@ -88,6 +98,8 @@ class PatientManager:
 #         return "_".join((self.pid, self.name, self.disease, self.gender, self.age))
     
 
-# manager = PatientManager()
+manager = PatientManager()
 # for patient in manager.patients:
 #     print(patient)
+
+print(manager.__dict__["patients"][1].__dict__.values())
